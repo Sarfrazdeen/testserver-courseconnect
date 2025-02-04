@@ -80,29 +80,28 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_project',
-        'USER':'root',
-        'PASSWORD':'S@rfraz3157',
-        'HOST':'localhost',
-        'PORT':'3306'
-
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'sarfarazkennedy$django_project',  # The database name
-#         'USER': 'sarfarazkennedy',                 # The MySQL username
-#         'PASSWORD': 'S@rfraz3157',                 # The MySQL password
-#         'HOST': 'sarfarazkennedy.mysql.pythonanywhere-services.com',  # Host URL
-#         'PORT': '3306',                            # Default MySQL port
+#         'NAME': 'django_project',
+#         'USER':'root',
+#         'PASSWORD':'S@rfraz3157',
+#         'HOST':'localhost',
+#         'PORT':'3306'
+
 #     }
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sarfarazkennedy$django_project',  # The database name
+        'USER': 'sarfarazkennedy',                 # The MySQL username
+        'PASSWORD': 'S@rfraz3157',                 # The MySQL password
+        'HOST': 'sarfarazkennedy.mysql.pythonanywhere-services.com',  # Host URL
+        'PORT': '3306',                            # Default MySQL port
+    }
+}
 
 
 # Password validation
