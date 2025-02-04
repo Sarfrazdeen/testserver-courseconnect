@@ -1,0 +1,286 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+/* Navbar Styles */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+.navbar-nav .nav-item {
+    margin-right: 20px; /* Adds space to the right of each list item */
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 0; /* Removes the margin from the last item */
+}
+
+.navbar .container-lg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .navbar-brand {
+    font-size: 32px;
+    color: #4CAF50; /* Green color for JIT Academy */
+}
+
+.navbar .nav-link {
+    font-size: 18px;
+    color: #333;
+    padding: 10px 20px;
+}
+
+.navbar .nav-link:hover {
+    color: #4CAF50; /* Green on hover */
+}
+
+.navbar .btn-outline-dark {
+    font-size: 18px;
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.navbar .btn-outline-dark:hover {
+    background-color: #4CAF50;
+    color: #fff;
+    border-color: #4CAF50;
+}
+
+.navbar .navbar-toggler {
+    border-color: #4CAF50;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.hero .container-lg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.hero .btn-lg {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    padding: 15px 30px;
+    text-decoration: none;
+}
+
+.hero .btn-lg:hover {
+    background-color: #45a049;
+}
+
+.hero img {
+    max-width: 100%;
+    margin-top: 40px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain; /* Ensures the image scales within its container */
+    max-height: 500px; /* Adjust the max height to prevent it from becoming too large */
+}
+
+/* Services Section Styles */
+.services {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+.services h2 {
+    font-size: 32px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    border-radius: 8px 8px 0 0;
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #555;
+}
+
+/* About Section Styles */
+.about {
+    background-color: #ffffff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Contact Section Styles */
+.contact {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+.contact-header {
+    margin-bottom: 30px;
+}
+
+.contact-logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.contact h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+form .form-control {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+form .btn-primary {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    padding: 15px 30px;
+    width: 100%;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+form .btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar .container-lg {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero .container-lg {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card img {
+        height: 150px;
+    }
+
+    .contact .container {
+        max-width: 600px;
+    }
+}
+.card {
+    border-radius: 8px;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+button[type="submit"] {
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.alert {
+    margin-bottom: 1rem;
+}
+

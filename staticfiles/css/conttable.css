@@ -1,0 +1,47 @@
+/* Centering the table */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto; /* Centering the table on the page */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Styling the table headers */
+table thead th {
+    background-color: #007bff; /* Blue header */
+    color: white;
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center; /* Center-align header text */
+}
+
+/* Styling table rows and cells */
+table tbody tr {
+    background-color: #f9f9f9; /* Light gray row background */
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f1f1f1; /* Alternating row color */
+}
+
+table tbody td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center; /* Center-align cell text */
+}
+
+/* Adding hover effect */
+table tbody tr:hover {
+    background-color: #f0f8ff; /* Light blue when hovering over rows */
+}
+
+/* Styling the heading */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}

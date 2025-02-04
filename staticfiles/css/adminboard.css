@@ -1,0 +1,65 @@
+/* General Styling */
+body {
+    background-color: #f4f6f9; /* Light gray background */
+    font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #343a40; /* Dark gray for a professional look */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 900px;
+    background-color: #ffffff; /* White background for the dashboard */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 30px;
+}
+
+/* Button Styling */
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Glow effect */
+}
+
+.btn-success {
+    background-color: #28a745; /* Bootstrap success color */
+    border: none;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Glow effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .btn-lg {
+        width: 100%; /* Make buttons stack and span full width on small screens */
+        margin-bottom: 15px; /* Add spacing between buttons */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

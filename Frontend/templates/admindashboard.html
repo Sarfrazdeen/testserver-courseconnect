@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CDN link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJqS9Tc7J9sFvL5jsF4DQ7OAkzSxQK56cJoLTS2vpsR9A4Rl0K4VqWmPt5cu" crossorigin="anonymous">
+    
+    <!-- Font Awesome CDN link for professional icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .dashboard-header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 4px solid #007bff;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .btn {
+            border-radius: 30px;
+            padding: 10px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/jitpng.png' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="dashboard-header position-relative">
+        <h1>Admin Dashboard</h1>
+        <form action="{% url 'logout' %}" method="POST" class="logout-btn">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </header>
+
+    <!-- Gallery Section -->
+    <div class="container my-5">
+        <div class="gallery-grid">
+            <!-- Contacts Card -->
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="icon">
+                        <i class="fas fa-address-book"></i>
+                    </div>
+                    <h5 class="card-title">Contacts</h5>
+                    <p class="card-text text-muted">Manage and view your contact list.</p>
+                    <a href="{% url 'Contactlist' %}" class="btn btn-primary">View Contacts</a>
+                </div>
+            </div>
+
+            <!-- Admissions Card -->
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h5 class="card-title">Admissions</h5>
+                    <p class="card-text text-muted">Access and manage admissions data.</p>
+                    <a href="{% url 'Admissionlist' %}" class="btn btn-success">View Admissions</a>
+                </div>
+            </div>
+
+            <!-- Add more cards here if needed -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

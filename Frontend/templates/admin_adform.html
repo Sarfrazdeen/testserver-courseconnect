@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Admission Form (Admin)</h2>
+    <p>Admins can use this form to add new admissions directly to the database.</p>
+
+    {% if form_status == 'success' %}
+        <!-- Success Message -->
+        <div class="alert alert-success text-center" role="alert">
+            <h4 class="alert-heading">Success!</h4>
+            <p>The admission has been added successfully. Returning to the admission list...</p>
+        </div>
+    {% elif form_status == 'failure' %}
+        <!-- Failure Message -->
+        <div class="alert alert-danger text-center" role="alert">
+            <h4 class="alert-heading">Oops!</h4>
+            <p>Something went wrong. Please check the form and try again.</p>
+        </div>
+    {% else %}
+        <!-- Admission Form -->
+        <form id="admission-form" method="POST" action="{% url 'add_admission' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_full_name" class="form-label">Full Name</label>
+                {{ admission_form.full_name }}
+                {% if admission_form.full_name.errors %}
+                    <div class="text-danger">
+                        {% for error in admission_form.full_name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email Address</label>
+                {{ admission_form.email }}
+                {% if admission_form.email.errors %}
+                    <div class="text-danger">
+                        {% for error in admission_form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_phone" class="form-label">Phone Number</label>
+                {{ admission_form.phone }}
+                {% if admission_form.phone.errors %}
+                    <div class="text-danger">
+                        {% for error in admission_form.phone.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_course" class="form-label">Select Course</label>
+                {{ admission_form.course }}
+                {% if admission_form.course.errors %}
+                    <div class="text-danger">
+                        {% for error in admission_form.course.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_message" class="form-label">Additional Information</label>
+                {{ admission_form.message }}
+                {% if admission_form.message.errors %}
+                    <div class="text-danger">
+                        {% for error in admission_form.message.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_created_by_user_id" class="form-label">Created By User ID</label>
+                <input type="number" id="id_created_by_user_id" name="created_by_user_id" class="form-control" placeholder="Enter User ID">
+                {% if admission_form.created_by_user_id.errors %}
+                    <div class="text-danger">
+                        {% for error in admission_form.created_by_user_id.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit Application</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

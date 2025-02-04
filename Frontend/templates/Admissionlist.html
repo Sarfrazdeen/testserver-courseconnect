@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-warning {
+            background-color: #fff3cd !important;
+        }
+        .table-success {
+            background-color: #d4edda !important;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/jitpng.png' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm bg-light">
+        <div class="container-lg">
+            <a href="javascript:history.back()" class="btn btn-outline-secondary me-3">Back</a>
+            <a class="navbar-brand fw-bold" href="#">Admission List</a>
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-secondary ms-auto">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center mb-4">Add Admission</h2>
+
+        <!-- Add Admission Button and Modal -->
+        <div class="text-end mb-3">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAdmissionModal">Add Admission</button>
+        </div>
+
+        <!-- Add Admission Modal -->
+        <div class="modal fade" id="addAdmissionModal" tabindex="-1" aria-labelledby="addAdmissionModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addAdmissionModalLabel">Add New Admission</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" action="{% url 'add_admission2' %}">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <!-- Full Name -->
+                            <div class="mb-3">
+                                <label for="id_full_name" class="form-label">Full Name</label>
+                                <input type="text" name="full_name" id="id_full_name" class="form-control" required>
+                            </div>
+                    
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="id_email" class="form-label">Email</label>
+                                <input type="email" name="email" id="id_email" class="form-control" required>
+                            </div>
+                    
+                            <!-- Phone -->
+                            <div class="mb-3">
+                                <label for="id_phone" class="form-label">Phone</label>
+                                <input type="tel" name="phone" id="id_phone" class="form-control" 
+                                       pattern="^\d{10}$" 
+                                       title="Phone number must be exactly 10 digits." 
+                                       placeholder="Enter 10-digit phone number" required>
+                            </div>
+                    
+                            <!-- Course -->
+                            <div class="form-group">
+                                <label for="course" class="form-label">Select Course</label>
+                                <select name="course" id="course" class="form-select" required>
+                                    <option value="C_programming">C Programming</option>
+                                    <option value="Python_programming">Python Programming</option>
+                                    <option value="Java_programming">Java Programming</option>
+                                    <option value="React_js">React JS</option>
+                                    <option value="Front_end_development">Front End Development</option>
+                                    <option value="Web_development">Full Stack Web Development</option>
+                                    <option value="Civil_cad">Civil CAD</option>
+                                    <option value="Mechanical_cad">Mechanical CAD</option>
+                                    <option value="Digital_marketing">Digital Marketing</option>
+                                    <option value="Graphic_design">Graphic Design</option>
+                                    <option value="Other">Other Programs</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Admission</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Admission List Table -->
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Selected Course</th>
+                    <th>Status</th>
+                    <th>Created By (User ID)</th>
+                    <th>Created Date</th>
+                    <th>Modified By (Admin ID)</th>
+                    <th>Modified Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for admission in all_admissions %}
+                <tr class="{% if admission.status == 'on_progress' %}table-warning{% elif admission.status == 'finished' %}table-success{% endif %}">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ admission.full_name }}</td>
+                    <td>{{ admission.email }}</td>
+                    <td>{{ admission.phone }}</td>
+                    <td>{{ admission.course }}</td>
+                    <td>
+                        <form action="{% url 'update_status' admission.id %}" method="post">
+                            {% csrf_token %}
+                            <select name="status" class="form-select form-select-sm" required>
+                                <option value="pending" {% if admission.status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="on_progress" {% if admission.status == 'on_progress' %}selected{% endif %}>On Progress</option>
+                                <option value="finished" {% if admission.status == 'finished' %}selected{% endif %}>Finished</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">Update</button>
+                        </form>
+                    </td>
+                    <td>{{ admission.created_by_user_id|default:0 }}</td>
+                    <td>{{ admission.created_date|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ admission.modified_by_user_id|default:0 }}</td>
+                    <td>{{ admission.modified_date|date:"Y-m-d H:i:s" }}</td>
+                    <td>
+                        <a href="{% url 'deleteadmission' admission.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this admission?');">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="11" class="text-center">No admissions found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

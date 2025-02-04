@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+        }
+        th.email-column, td.email-column {
+            width: 30%; /* Adjust width as needed */
+            word-break: break-word; /* Break long words to fit */
+            white-space: normal;    /* Allow wrapping */
+        }
+    </style>
+</head>
+<body>
+    <h2>Admission List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th class="email-column">Email</th>
+                <th>Course</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for admission in admissions %}
+            <tr>
+                <td>{{ admission.id }}</td>
+                <td>{{ admission.full_name }}</td>
+                <td class="email-column">{{ admission.email }}</td>
+                <td>{{ admission.course }}</td>
+                <td>{{ admission.phone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

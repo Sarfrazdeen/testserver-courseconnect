@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Enrollment</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/jitpng.png' %}">
+</head>
+<body>
+    <h1>Create Enrollment</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
